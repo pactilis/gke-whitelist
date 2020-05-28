@@ -20,10 +20,10 @@ if (whitelist) {
 
 /**
  * Whitelist a ip address on GKE private cluster master
- * @param {String} ipAddress Ip address to whitelist
+ * @param {String} cidr Ip address range to whitelist
  * @param {String} displayName name to give to the entry
  */
-async function performWhitelist(ipAddress, displayName) {
+async function performWhitelist(cidr, displayName) {
   const projectId = await client.getProjectId();
   const request = {
     projectId,
@@ -40,7 +40,7 @@ async function performWhitelist(ipAddress, displayName) {
           ...masterAuthorizedNetworksConfig.cidrBlocks,
           {
             displayName,
-            cidrBlock: `${ipAddress}/32`,
+            cidrBlock: cidr,
           },
         ],
       },

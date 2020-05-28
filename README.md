@@ -29,9 +29,11 @@ Display name for the ip range. Default: "Github Action"
 You have to make sure `GOOGLE_APPLICATION_CREDENTIALS` is defined, from a previous step for example.
 You may use [setup-gcloud](https://github.com/GoogleCloudPlatform/github-actions/tree/master/setup-gcloud) action and `export_default_credentials` parameter to true.
 
+```action
 uses: pactilis/gke-whitelist@master
 with:
-zone: 'my-gcloud-zone'
-cluster_id: 'my-cluster-id'
-whitelist: 'true'
-cidr: '0.0.0.0/32'
+  zone: 'my-gcloud-zone'
+  cluster_id: 'my-cluster-id'
+  whitelist: 'true'
+  cidr: '0.0.0.0/32'
+```

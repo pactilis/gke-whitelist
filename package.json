@@ -1,0 +1,17 @@
+{
+  "name": "gke-whitelist",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r dotenv/config index.js"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^2.2.0",
+    "@google-cloud/container": "^1.7.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}

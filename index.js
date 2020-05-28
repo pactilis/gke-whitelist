@@ -6,7 +6,7 @@ const zone = core.getInput("zone");
 const clusterId = core.getInput("cluster_id");
 const cidr = core.getInput("cidr");
 const whitelist = core.getInput("whitelist") === "true";
-const whitelist = core.getInput("name");
+const name = core.getInput("name");
 
 if (whitelist) {
   performWhitelist(cidr, name).catch((err) => {

@@ -10,7 +10,9 @@
   "dependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^2.2.0",
-    "@google-cloud/container": "^1.7.0"
+    "@google-cloud/container": "^2.2.0",
+    "googleapis": "^71.0.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.22.3",

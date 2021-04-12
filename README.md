@@ -16,7 +16,7 @@ Whether to whitelist or the other way arround. Default: "true"
 
 **Required** Ip range to whitelist or unwhitelist
 
-### `name`
+### `cidr`
 
 Display name for the ip range. Default: "Github Action"
 

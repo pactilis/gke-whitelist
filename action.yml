@@ -4,7 +4,7 @@ inputs:
   cluster_id:  # id of input
     description: 'Google Cloud Kubernetes Cluster Name/ID'
     required: true
-  locaiton:  # id of input
+  location:  # id of input
     description: 'Zone/Region that Cluster is in'
     required: true
   whitelist:  # id of input

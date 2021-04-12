@@ -1,12 +1,11 @@
 const container = require("@google-cloud/container");
 const core = require("@actions/core");
 
-const client    = new container.v1.ClusterManagerClient();
-const location  = core.getInput("location");
+const client = new container.v1.ClusterManagerClient();
 const clusterId = core.getInput("cluster_id");
-const cidr      = core.getInput("cidr");
+const cidr = core.getInput("cidr");
 const whitelist = core.getInput("whitelist") === "true";
-const name      = core.getInput("name");
+const name = core.getInput("name");
 
 if (whitelist) {
   performWhitelist(cidr, name).catch((err) => {
@@ -24,11 +23,9 @@ if (whitelist) {
  * @param {String} displayName name to give to the entry
  */
 async function performWhitelist(cidr, displayName) {
-  const projectId = await client.getProjectId();
-  const request = { projectId, location, clusterId, };
-  const [{ masterAuthorizedNetworksConfig }] = await client.getCluster(request);
+  const [{ masterAuthorizedNetworksConfig }] = await client.getCluster({name: clusterId});
   return client.updateCluster({
-    ...request,
+    name: clusterId,
     update: {
       desiredMasterAuthorizedNetworksConfig: {
         ...masterAuthorizedNetworksConfig,
@@ -49,15 +46,9 @@ async function performWhitelist(cidr, displayName) {
  * @param {String} cidrBlock CIDR Block to remove
  */
 async function performUnwhitelist(cidrBlock) {
-  const projectId = await client.getProjectId();
-  const request = {
-    projectId,
-    location,
-    clusterId,
-  };
-  const [{ masterAuthorizedNetworksConfig }] = await client.getCluster(request);
+  const [{ masterAuthorizedNetworksConfig }] = await client.getCluster({name: clusterId});
   return client.updateCluster({
-    ...request,
+    name: clusterId,
     update: {
       desiredMasterAuthorizedNetworksConfig: {
         ...masterAuthorizedNetworksConfig,

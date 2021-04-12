@@ -4,10 +4,6 @@ This action whitelistor un-whitelist ip/range on GKE private cluster
 
 ## Inputs
 
-### `location`
-
-**Required** Google Cloud location.
-
 ### `cluster_id`
 
 **Required** Google Cloud Kubernetes Cluster ID.

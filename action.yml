@@ -1,9 +1,6 @@
 name: 'Whitelist/Unwhitelist ip-range on GKE'
 description: 'Whitelist/Unwhitelist ip/range on GKE private cluster'
 inputs:
-  zone:  # id of input
-    description: 'Google Cloud zone'
-    required: true
   cluster_id:  # id of input
     description: 'Google Cloud Kubernetes Cluster ID'
     required: true

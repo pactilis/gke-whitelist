@@ -1,6 +1,6 @@
 # Whitelist/Unwhitelist ip-range on GKE
 
-This action whitelistor un-whitelist ip/range on GKE private cluster
+This action whitelist or un-whitelist ip/range on GKE private cluster
 
 ## Inputs
 
@@ -8,15 +8,19 @@ This action whitelistor un-whitelist ip/range on GKE private cluster
 
 **Required** Google Cloud Kubernetes Cluster ID.
 
+### `location`
+
+**Required** Google Cloud Kubernetes Cluster Zone/Location.
+
+### `cidr`
+
+**Required** IP range to whitelist or unwhitelist
+
 ### `whitelist`
 
-Whether to whitelist or the other way arround. Default: "true"
+Whether to whitelist or unwhitelist. Default: "true"
 
-### `cidr`
-
-**Required** Ip range to whitelist or unwhitelist
-
-### `cidr`
+### `name`
 
 Display name for the ip range. Default: "Github Action"
 
@@ -28,8 +32,8 @@ You may use [setup-gcloud](https://github.com/GoogleCloudPlatform/github-actions
 ```action
 uses: pactilis/gke-whitelist@master
 with:
-  zone: 'my-gcloud-zone'
   cluster_id: 'my-cluster-id'
-  whitelist: 'true'
+  location: 'my-gcloud-zone'
   cidr: '0.0.0.0/32'
+  whitelist: 'true'
 ```

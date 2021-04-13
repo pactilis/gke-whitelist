@@ -1,11 +1,8 @@
-const container = require("@google-cloud/container");
-const core = require("@actions/core");
-
 const {google} = require('googleapis');
 const fetch = require("node-fetch");
+const core = require("@actions/core");
 
-
-const client = new container.v1.ClusterManagerClient();
+// Get Variables from Actions
 const location = core.getInput("location");
 const clusterId = core.getInput("cluster_id");
 const cidr = core.getInput("cidr");
@@ -29,7 +26,7 @@ if (whitelist) {
  */
 async function performWhitelist(cidr, displayName) {
   // Get Project and Authentication
-  const projectId = await client.getProjectId();
+  const projectId = await google.auth.getProjectId()
   const authClient = await authorize();
   // New Cidr Block
   const newBlock = { displayName: name, cidrBlock: cidr }
@@ -47,7 +44,7 @@ async function performWhitelist(cidr, displayName) {
  */
 async function performUnwhitelist(cidrBlock) {
   // Get Project and Authentication
-  const projectId = await client.getProjectId();
+  const projectId = await google.auth.getProjectId()
   const authClient = await authorize();
   // Get Current Cidr blocks, filter out the unwanted one, and post it back
   await updateCidrs(projectId, authClient, (await getCidrs(projectId, authClient)).filter((entry) => entry.cidrBlock !== cidrBlock));

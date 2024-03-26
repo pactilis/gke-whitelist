@@ -1,18 +1,18 @@
 name: 'Whitelist/Unwhitelist ip-range on GKE'
 description: 'Whitelist/Unwhitelist ip/range on GKE private cluster'
 inputs:
-  zone:  # id of input
-    description: 'Google Cloud zone'
-    required: true
   cluster_id:  # id of input
-    description: 'Google Cloud Kubernetes Cluster ID'
+    description: 'Google Cloud Kubernetes Cluster Name/ID'
+    required: true
+  location:  # id of input
+    description: 'Zone/Region that Cluster is in'
     required: true
   whitelist:  # id of input
-    description: 'Whether to whitelist or the other way arround'
+    description: 'Set to true to whitelist CIDR, false to remove'
     required: false
     default: "true"
   cidr:  # id of input
-    description: 'Ip range to whitelist or unwhitelist'
+    description: 'Ip range to whitelist or remove from whitelist'
     required: true
   name:  # id of input
     description: 'Display name for the ip range'
